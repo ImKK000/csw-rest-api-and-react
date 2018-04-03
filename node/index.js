@@ -31,4 +31,11 @@ router.route('/bears/:id')
 		res.send(bears)
 	})
 
+	.put( (req,res) => {
+		const id = req.params.id		
+		bears[id].name = req.body.name
+		bears[id].weight = req.body.weight		
+		res.send(bears)
+	})
+
 app.listen(80)
