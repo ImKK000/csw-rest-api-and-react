@@ -23,5 +23,12 @@ router.route('/bears')
 		res.send(bears)
 	})
 
+router.route('/bears/:id')
+	.get( (req,res) => res.send(bears[req.params.id]))
+
+	.delete( (req,res) => {
+		delete bears[ req.params.id ]
+		res.send(bears)
+	})
 
 app.listen(80)
