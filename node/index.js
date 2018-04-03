@@ -3,7 +3,7 @@ const app = express()
 const router = express.Router()
 const bodyParser = require('body-parser')
 
-let bears = [
+const bears = [
   { id: 1, name: 'Pooh', weight: 100 },
   { id: 2, name: 'Winnie', weight: 200 }
 ]
@@ -17,11 +17,11 @@ router.route('/bears')
   .get((req, res) => res.send(bears))
 
   .post((req, res) => {
-    let bear = {}
-    bear.id = bears.length + 1
-    bear.name = req.body.name
-    bear.weight = req.body.weight
-    bears.push(bear)
+    bears.push({
+      id: bears.length + 1,
+      name: req.body.name,
+      weight: req.body.weight
+    })
     res.send(bears)
   })
 
@@ -35,9 +35,12 @@ router.route('/bears/:id')
 
   .put((req, res) => {
     const id = req.params.id
-    bears[id].name = req.body.name
-    bears[id].weight = req.body.weight
+    bears[id] = {
+      id: id,
+      name: req.body.name,
+      weight: req.body.weight
+    }
     res.send(bears)
   })
 
-app.listen(80)
+app.listen(3000)
