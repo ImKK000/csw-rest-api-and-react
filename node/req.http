@@ -1,0 +1,29 @@
+@uri = http://127.0.0.1:3000/api/bears
+@contentType = application/x-www-form-urlencoded
+
+### Get all bears
+GET {{uri}}
+
+### Add 'Tigger', 50
+POST {{uri}}
+Content-Type: {{contentType}}
+
+name=Tigger&weight=150
+
+### Add 'Pgilet', 50
+POST {{uri}}
+Content-Type: {{contentType}}
+
+name=Piglet&weight=50
+
+### Get bear at index 0
+GET {{uri}}/0
+
+### Edit bear at index 0
+PUT {{uri}}/0
+Content-Type: {{contentType}}
+
+name=Eeyore&weight=175
+
+### Delete bear at index 0
+DELETE {{uri}}/0
